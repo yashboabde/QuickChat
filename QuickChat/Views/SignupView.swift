@@ -79,6 +79,10 @@ struct SignupView: View {
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(
+                isPresented: $isLoggedIn,
+                destination: { ChatsView() }
+            )
         }
     }
     
@@ -124,6 +128,8 @@ struct SignupView: View {
             // You might want to automatically sign in the user here
             // or send a verification email:
             sendEmailVerification()
+            
+            self.isLoggedIn = true
             
             // Optionally dismiss after delay
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
