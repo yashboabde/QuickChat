@@ -69,6 +69,10 @@ struct LoginView: View {
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(
+                isPresented: $isLoggedIn,
+                destination: { ChatsView() }
+            )
         }
     }
 
